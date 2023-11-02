@@ -58,11 +58,14 @@
                 echo "<td>";
                 
                 // Bouton pour la modification
-                echo "<a href='modifier_contact.php?id=" . $contact['id'] . "'><button>Modifier</button></a>";
+                echo "<form method='post' action='../view/modifier.php'>";
+                echo "<input type='hidden' name='contact_id' value='" . $contact['id'] . "'>";
+                echo "<button type='submit' name='modify'>Modifier</button>";
+                echo "</form>";
                 
                 // Bouton pour la suppression
-                echo "<form method='post' action='supprimer_contact.php'>";
-                echo "<input type='hidden' name='contact_id' value='" . $contact['id'] . "'>";
+                echo "<form method='post' action='../controller/supprimer.php'>";
+                echo "<input type='hidden' name='contact_id' value='" . $contact['id'] . "'>"; //Hidden pour récuperer ID dans url 
                 echo "<button type='submit' name='delete'>Supprimer</button>";
                 echo "</form>";
                 
