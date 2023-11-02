@@ -76,7 +76,9 @@
                     <option value="non">Non</option>
                 </select>
             </div>
-            <button class="btn" type="submit" nam="enregister">Enregistrer le Contact</button>
+            <a href="listeContact.php">
+            <button class="btn" type="submit" name="enregister">Enregistrer le Contact</button>
+            </a>
         </form>
     </div>
 </body>
