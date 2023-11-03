@@ -46,15 +46,17 @@
         $statement = $pdo->prepare($query);
         $statement->execute();
         $contacts = $statement->fetchAll(PDO::FETCH_ASSOC);
-        if (count($contacts) > 0) {
+        if (count($contacts) > 0) 
+        {
             echo "<table>";
             echo "<tr><th>Nom</th><th>Prénom</th><th>Numéro de Téléphone</th><th>Favori</th><th>Actions</th></tr>";
-            foreach ($contacts as $contact) {
+            foreach ($contacts as $contact) 
+            {
                 echo "<tr>";
                 echo "<td>" . $contact['nom'] . "</td>";
                 echo "<td>" . $contact['prenom'] . "</td>";
                 echo "<td>" . $contact['numero_telephone'] . "</td>";
-                echo "<td>" . ($contact['favori'] == 1 ? "Oui" : "Non") . "</td>";
+                echo "<td>" . ($contact['favori']) . "</td>";
                 echo "<td>";
                 
                 // Bouton pour la modification
@@ -73,7 +75,8 @@
                 echo "</tr>";
             }
             echo "</table>";
-        } else {
+        } else 
+        {
             echo "Aucun contact enregistré.";
         }
         ?>
