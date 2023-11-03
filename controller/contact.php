@@ -13,7 +13,6 @@ class contactController
             $prenom = $_POST['prenom'];
             $numero_telephone = $_POST['numero_telephone'];
             $favori = $_POST['favori'];
-            // $id = $_GET['$id'];
             $userContact = new Contact();
             $userContact->insertContact($nom, $prenom, $numero_telephone, $favori);
             header("location: ../view/listeContact.php");
