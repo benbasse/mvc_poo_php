@@ -27,4 +27,6 @@ class DataBase
     }
 
 }
+// Instanciation
+$database = new DataBase();
 ?>
