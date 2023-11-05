@@ -8,6 +8,7 @@ class Contact
     private $numero_telephone;
     private $favori;
     private $id;
+    
     // public function __construct($nom, $prenom, $numero_telephone, $favori) 
     // {
     //     $this->nom = $nom;
@@ -17,13 +18,14 @@ class Contact
     //     // $this->id = $contactId;
     // }
     // Function pour enregister un contact 
-    public function insertContact($nom, $prenom, $numero_telephone, $favori)
+    public function insertContact($nom, $prenom, $numero_telephone, $favori, $db)
     {
-        $db = new DataBase();
+        // $db = new DataBase();
         $pdo = $db->connect();
         $query = "INSERT INTO contact (nom, prenom, numero_telephone, favori) VALUES (?, ?, ?, ?)";
         $statement = $pdo->prepare($query);
-        $statement->execute([
+        $statement->execute
+        ([
             $this->nom = $nom,
             $this->prenom = $prenom,
             $this->numero_telephone = $numero_telephone,
@@ -33,9 +35,9 @@ class Contact
 
 
     // Function pour supprimer un contact
-    public function deleteContact($id)
+    public function deleteContact($id, $db)
     {
-        $db = new DataBase();
+        // $db = new DataBase();
         $pdo = $db->connect();
         $query = "DELETE FROM contact WHERE id = ?";
         $statement = $pdo->prepare($query);
@@ -43,9 +45,9 @@ class Contact
             $this->id = $id
         ]);
     }
-    public function updateContact($id, $nom, $prenom, $numero_telephone, $favori)
+    public function updateContact($id, $nom, $prenom, $numero_telephone, $favori, $db)
     {
-        $db = new DataBase();
+        // $db = new DataBase();
         $pdo = $db->connect();
         $query = "UPDATE contact SET nom = ?, prenom = ?, numero_telephone = ?, favori = ? WHERE id = ?";
         $statement = $pdo->prepare($query);
