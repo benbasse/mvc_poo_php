@@ -3,11 +3,7 @@ include_once("../model/classContact.php");
 include_once("../model/classdb.php");
 ini_set('display_errors', 'On');
 
-class contactController 
-{
-    public function insertContact() 
-    {
-        if (empty($_POST["nom"]) && empty($_POST["prenom"]) && empty($_POST["numero_telephone"]))
+if (empty($_POST["nom"]) && empty($_POST["prenom"]) && empty($_POST["numero_telephone"]))
         {
             echo "<p style = color:red>All fields are mandatory</p>";
         } 
@@ -30,7 +26,7 @@ class contactController
             } 
 
             $numero_telephone = htmlspecialchars($_POST['numero_telephone']);
-            if (strlen($numero_telephone) < 9)
+            if (strlen($numero_telephone) < 9 && is_numeric($numero_telephone))
             {
                 echo '<p style = color:red>Your number is incorrect</p>';
                 return;
@@ -42,13 +38,8 @@ class contactController
             }
 
                 $userContact = new Contact();
-                $userContact->insertContact($nom, $prenom, $numero_telephone, $favori);
+                $userContact->insertContact($nom, $prenom, $numero_telephone, $favori, $database);
                 header("location: ../view/listeContact.php");
             
         }
-    }
 
-}
-
-$Usercontact = new contactController();
-$Usercontact->insertContact();
