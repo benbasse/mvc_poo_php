@@ -9,7 +9,7 @@ if (isset($_POST['delete'])) {
         $db = new DataBase();
         $pdo = $db->connect();
         $result = new Contact();
-        $result-> deleteContact($contactId);
+        $result-> deleteContact($contactId, $db);
     }
 }
 // Redirigez l'utilisateur vers la page de liste des contacts après la suppression
