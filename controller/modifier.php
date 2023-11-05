@@ -1,5 +1,6 @@
 <?php
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
     if (isset($_POST['contact_id'])) 
@@ -22,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         }
 
         $numeroTelephone = htmlspecialchars($_POST['numero_telephone']);
-        if (strlen($numeroTelephone) < 9) 
+        if (strlen($numeroTelephone) < 9 && is_numeric($numeroTelephone) && filter_input(FILTER_SANITIZE_NUMBER_INT, "numeroTelephone")) 
         {
             echo "<p style = color:red>Your number is incorrect</p>";
             return;
@@ -39,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $db = new DataBase();
         $pdo = $db->connect();
         $result = new Contact();
-        $result->updateContact($contactId, $nom, $prenom, $numeroTelephone, $favori);
+        $result->updateContact($contactId, $nom, $prenom, $numeroTelephone, $favori, $db);
         // Redirigez l'utilisateur vers la page de liste des contacts après la modification
         header("Location: ../view/listeContact.php");
     }
